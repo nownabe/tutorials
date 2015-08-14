@@ -104,7 +104,7 @@ var CommentBox = (function (_React$Component) {
           null,
           'Comments'
         ),
-        _react2['default'].createElement(_CommentList2['default'], null),
+        _react2['default'].createElement(_CommentList2['default'], { data: this.props.data }),
         _react2['default'].createElement(_CommentForm2['default'], null)
       );
     }
@@ -200,19 +200,17 @@ var CommentList = (function (_React$Component) {
   _createClass(CommentList, [{
     key: 'render',
     value: function render() {
+      var commentNodes = this.props.data.map(function (comment) {
+        return _react2['default'].createElement(
+          _Comment2['default'],
+          { author: comment.author },
+          comment.text
+        );
+      });
       return _react2['default'].createElement(
         'div',
         { className: 'commentList' },
-        _react2['default'].createElement(
-          _Comment2['default'],
-          { author: 'Pete Hunt' },
-          'This is one comment'
-        ),
-        _react2['default'].createElement(
-          _Comment2['default'],
-          { author: 'Jordan Walke' },
-          'This is *another* comment'
-        )
+        commentNodes
       );
     }
   }]);
@@ -236,7 +234,9 @@ var _componentsCommentBox = require('./components/CommentBox');
 
 var _componentsCommentBox2 = _interopRequireDefault(_componentsCommentBox);
 
-_react2['default'].render(_react2['default'].createElement(_componentsCommentBox2['default'], null), document.getElementById('container'));
+var data = [{ author: 'Pete Hunt', text: 'This is one comment' }, { author: 'Jordan Walke', text: 'This is *another* comment' }];
+
+_react2['default'].render(_react2['default'].createElement(_componentsCommentBox2['default'], { data: data }), document.getElementById('container'));
 
 },{"./components/CommentBox":2,"react":162}],6:[function(require,module,exports){
 // shim for using process in browser
