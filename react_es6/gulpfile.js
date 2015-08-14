@@ -24,17 +24,14 @@ gulp.task('build', function() {
     .on('error', errorHandler)
     .pipe(source('bundle.js'))
     .pipe(buffer())
-    .pipe(gulp.dest('./build'));
-});
-
-gulp.task('reload', function() {
-  browserSync.reload();
+    .pipe(gulp.dest('./build'))
+    .pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task('watch', function() {
-  gulp.watch('./index.js', ['build', 'reload']);
-  gulp.watch('./components/*.js', ['build', 'reload'])
-  gulp.watch('./index.html', ['reload'])
+  gulp.watch('./index.js', ['build']);
+  gulp.watch('./index.html', ['build']);
+  gulp.watch('./components/*.js', ['build']);
 });
 
 gulp.task('default', ['build', 'watch', 'browser-sync']);
