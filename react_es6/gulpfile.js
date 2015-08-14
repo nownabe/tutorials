@@ -33,6 +33,7 @@ gulp.task('reload', function() {
 
 gulp.task('watch', function() {
   gulp.watch('./index.js', ['build', 'reload']);
+  gulp.watch('./components/*.js', ['build', 'reload'])
   gulp.watch('./index.html', ['reload'])
 });
 
