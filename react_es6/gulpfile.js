@@ -12,7 +12,7 @@ function errorHandler(err) {
 gulp.task('browser-sync', function() {
   browserSync({
     server: {
-      baseDir: './'
+      script: './server.js'
     }
   });
 });
