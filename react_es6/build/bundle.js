@@ -122,6 +122,9 @@ var CommentBox = (function (_React$Component) {
     value: function handleCommentSubmit(comment) {
       var _this2 = this;
 
+      var comments = this.state.data;
+      var newComments = comments.concat([comment]);
+      this.setState({ data: newComments });
       _jquery2['default'].ajax({
         url: this.props.url,
         dataType: 'json',
