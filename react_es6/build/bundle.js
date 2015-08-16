@@ -26,10 +26,10 @@ var _react2 = _interopRequireDefault(_react);
 var Comment = (function (_React$Component) {
   _inherits(Comment, _React$Component);
 
-  function Comment(props) {
+  function Comment() {
     _classCallCheck(this, Comment);
 
-    _get(Object.getPrototypeOf(Comment.prototype), 'constructor', this).call(this, props);
+    _get(Object.getPrototypeOf(Comment.prototype), 'constructor', this).apply(this, arguments);
   }
 
   _createClass(Comment, [{
@@ -191,10 +191,10 @@ var _react2 = _interopRequireDefault(_react);
 var CommentForm = (function (_React$Component) {
   _inherits(CommentForm, _React$Component);
 
-  function CommentForm(props) {
+  function CommentForm() {
     _classCallCheck(this, CommentForm);
 
-    _get(Object.getPrototypeOf(CommentForm.prototype), 'constructor', this).call(this, props);
+    _get(Object.getPrototypeOf(CommentForm.prototype), 'constructor', this).apply(this, arguments);
   }
 
   _createClass(CommentForm, [{
@@ -255,10 +255,10 @@ var _Comment2 = _interopRequireDefault(_Comment);
 var CommentList = (function (_React$Component) {
   _inherits(CommentList, _React$Component);
 
-  function CommentList(props) {
+  function CommentList() {
     _classCallCheck(this, CommentList);
 
-    _get(Object.getPrototypeOf(CommentList.prototype), 'constructor', this).call(this, props);
+    _get(Object.getPrototypeOf(CommentList.prototype), 'constructor', this).apply(this, arguments);
   }
 
   _createClass(CommentList, [{
