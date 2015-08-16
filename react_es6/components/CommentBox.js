@@ -11,7 +11,7 @@ export default class CommentBox extends React.Component {
     };
   }
 
-  componentDidMount() {
+  loadCommentsFromServer() {
     $.ajax({
       url: this.props.url,
       dataType: 'json',
@@ -21,6 +21,11 @@ export default class CommentBox extends React.Component {
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
+  }
+
+  componentDidMount() {
+    this.loadCommentsFromServer();
+    setInterval(this.loadCommentsFromServer.bind(this), this.props.pollInterval);
   }
 
   render() {

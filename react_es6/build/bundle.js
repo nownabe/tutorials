@@ -101,8 +101,8 @@ var CommentBox = (function (_React$Component) {
   }
 
   _createClass(CommentBox, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
+    key: 'loadCommentsFromServer',
+    value: function loadCommentsFromServer() {
       var _this = this;
 
       _jquery2['default'].ajax({
@@ -116,6 +116,12 @@ var CommentBox = (function (_React$Component) {
           console.error(_this.props.url, status, err.toString());
         }).bind(this)
       });
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.loadCommentsFromServer();
+      setInterval(this.loadCommentsFromServer.bind(this), this.props.pollInterval);
     }
   }, {
     key: 'render',
@@ -258,7 +264,7 @@ var _componentsCommentBox = require('./components/CommentBox');
 
 var _componentsCommentBox2 = _interopRequireDefault(_componentsCommentBox);
 
-_react2['default'].render(_react2['default'].createElement(_componentsCommentBox2['default'], { url: 'comments.json' }), document.getElementById('container'));
+_react2['default'].render(_react2['default'].createElement(_componentsCommentBox2['default'], { url: 'comments.json', pollInterval: 2000 }), document.getElementById('container'));
 
 },{"./components/CommentBox":2,"react":163}],6:[function(require,module,exports){
 // shim for using process in browser
