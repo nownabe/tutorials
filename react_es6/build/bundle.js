@@ -118,6 +118,24 @@ var CommentBox = (function (_React$Component) {
       });
     }
   }, {
+    key: 'handleCommentSubmit',
+    value: function handleCommentSubmit(comment) {
+      var _this2 = this;
+
+      _jquery2['default'].ajax({
+        url: this.props.url,
+        dataType: 'json',
+        type: 'POST',
+        data: comment,
+        success: (function (data) {
+          _this2.setState({ data: data });
+        }).bind(this),
+        error: (function (xhr, status, err) {
+          console.error(_this2.props.url, status, err.toString());
+        }).bind(this)
+      });
+    }
+  }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.loadCommentsFromServer();
@@ -135,7 +153,7 @@ var CommentBox = (function (_React$Component) {
           'Comments'
         ),
         _react2['default'].createElement(_CommentList2['default'], { data: this.state.data }),
-        _react2['default'].createElement(_CommentForm2['default'], null)
+        _react2['default'].createElement(_CommentForm2['default'], { onCommentSubmit: this.handleCommentSubmit.bind(this) })
       );
     }
   }]);
@@ -177,12 +195,25 @@ var CommentForm = (function (_React$Component) {
   }
 
   _createClass(CommentForm, [{
+    key: 'handleSubmit',
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var author = _react2['default'].findDOMNode(this.refs.author).value.trim();
+      var text = _react2['default'].findDOMNode(this.refs.text).value.trim();
+      if (!text || !author) return;
+      this.props.onCommentSubmit({ author: author, text: text });
+      _react2['default'].findDOMNode(this.refs.author).value = '';
+      _react2['default'].findDOMNode(this.refs.text).value = '';
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2['default'].createElement(
-        'div',
-        { className: 'commentForm' },
-        'Hello, world! I am a CommentForm.'
+        'form',
+        { className: 'commentForm', onSubmit: this.handleSubmit.bind(this) },
+        _react2['default'].createElement('input', { type: 'text', placeholder: 'Your name', ref: 'author' }),
+        _react2['default'].createElement('input', { type: 'text', placeholder: 'Say something...', ref: 'text' }),
+        _react2['default'].createElement('input', { type: 'submit', value: 'Post' })
       );
     }
   }]);
