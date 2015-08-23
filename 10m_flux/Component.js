@@ -11,20 +11,29 @@ export default class Component extends React.Component {
   constructor(props) {
     super(props)
     this.state = { count: store.getCount() }
-    store.on("CHANGE", () => {
-      this._onChange()
+
+    // Storeの変更を監視する
+    store.on("countChanged", () => {
+      this.onCountChanged()
     })
   }
-  _onChange() {
+
+  // countChangedイベントのコールバック
+  onCountChanged() {
     this.setState({count: store.getCount()})
   }
-  tick() {
-    action.countUp(this.state.count + 1)
+
+  // onClickイベントのハンドラ
+  countUp() {
+    // countUp Actionを実行する
+    // データを流す
+    action.countUp(this.state.count)
   }
+
   render() {
     return (
       <div>
-        <button onClick={this.tick.bind(this)}>Count Up</button>
+        <button onClick={this.countUp.bind(this)}>Count Up</button>
         <p>Count: {this.state.count}</p>
       </div>
     )
