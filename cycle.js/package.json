@@ -2,7 +2,7 @@
   "name": "cyclejs-tutorial",
   "version": "1.0.0",
   "description": "Cycle.js exercise",
-  "main": "index.js",
+  "main": "dist/bundle.js",
   "dependencies": {},
   "devDependencies": {
     "@cycle/core": "^6.0.0",
@@ -10,12 +10,14 @@
     "babel-core": "^6.4.5",
     "babel-loader": "^6.2.1",
     "babel-preset-es2015": "^6.3.13",
+    "file-loader": "^0.8.5",
     "rx": "^4.0.7",
     "webpack": "^1.12.12",
-    "webpack-livereload-plugin": "^0.5.1"
+    "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server",
+    "build": "webpack"
   },
   "author": "nownabe",
   "license": "MIT",
