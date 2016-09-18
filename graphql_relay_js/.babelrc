@@ -1,9 +1,0 @@
-{
-  "presets": [
-    {
-      "plugins": ["./build/babelRelayPlugin"]
-    },
-    "react",
-    "es2015"
-  ]
-}
