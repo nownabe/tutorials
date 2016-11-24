@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Firebase Tutorial</title>
+		<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+		<script>
+			// Initialize Firebase
+			var config = {
+				apiKey: "AIzaSyDT_wSY4CmIQnb7U9tnWQ8dQvxAe1PS84o",
+				authDomain: "tutorial-c0761.firebaseapp.com",
+				databaseURL: "https://tutorial-c0761.firebaseio.com",
+				storageBucket: "tutorial-c0761.appspot.com",
+				messagingSenderId: "331147163333"
+			};
+			firebase.initializeApp(config);
+		</script>
+  </head>
+  <body>
+    <div id="message">
+			<h1>Firebase</h1>
+      <ul>
+        <li id="chatText"></li>
+        <li><input type="text" name="" id="my_text"></li>
+        <li><a onclick="changeData()">Update</a></li>
+      </ul>
+    </div>
+
+    <script>
+      var db = firebase.database();
+      var myChatAll = db.ref("/my/chat/all");
+      function changeData() {
+        console.log("changeData")
+        var text = document.getElementById("my_text").value;
+        myChatAll.set({title: "example", text: text})
+      }
+
+      myChatAll.on("value", function(snapshot) {
+        console.log("on")
+        console.log(snapshot)
+        console.log(snapshot.val())
+        console.log(document.getElementById("chatText"))
+        document.getElementById("chatText").innerText = snapshot.val().text;
+      })
+    </script>
+  </body>
+</html>
