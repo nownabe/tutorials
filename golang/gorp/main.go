@@ -5,12 +5,15 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"gopkg.in/gorp.v2"
 	"log"
+	"os"
 	"time"
 )
 
 func main() {
 	dbmap := initDb()
 	defer dbmap.Db.Close()
+
+	dbmap.TraceOn("[gorp]", log.New(os.Stdout, "myapp:", log.Lmicroseconds))
 
 	err := dbmap.TruncateTables()
 	checkErr(err, "TruncateTables failed")
