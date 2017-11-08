@@ -1,0 +1,28 @@
+---
+swagger: "2.0"
+info:
+  title: "Airport Codes"
+  description: "Get the name of an airport from its three-letter IATA code."
+  version: "1.0.0"
+
+host: "locari-dev.appspot.com"
+
+schemes:
+  - "https"
+paths:
+  "/airportName":
+    get:
+      description: "Get the airport name for a given IATA code."
+      operationId: "airportName"
+      parameters:
+        - name: iataCode
+          in: query
+          required: true
+          type: string
+      responses:
+        200:
+          description: "Succes."
+          schema:
+            type: string
+        400:
+          description: "The IATA code is invalid or missing."
