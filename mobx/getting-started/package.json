@@ -1,0 +1,21 @@
+{
+  "private": "true",
+  "name": "getting-started",
+  "version": "1.0.0",
+  "description": "[MobX: Ten minute introduction to MobX and React](https://mobx.js.org/getting-started.html)",
+  "main": "index.js",
+  "dependencies": {
+    "babel-preset-react": "^6.24.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "parcel-bundler": "^1.1.0"
+  },
+  "scripts": {
+    "start": "parcel index.html"
+  },
+  "author": "nownabe",
+  "license": "MIT"
+}
