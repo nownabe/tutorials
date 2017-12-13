@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package endpoints.examples.bookstore;
+
+option java_multiple_files = true;
+option java_outer_classname = "BookstoreProto";
+option java_package = "com.google.endpoints.examples.bookstore";
+
+import "google/protobuf/empty.proto";
+
+service Bookstore {
+  rpc ListShelves(google.protobuf.Empty) returns (ListShelvesResponse) {}
+  rpc CreateShelf(CreateShelfRequest) returns (Shelf) {}
+  rpc GetShelf(GetShelfRequest) returns (Shelf) {}
+  rpc DeleteShelf(DeleteShelfRequest) returns (google.protobuf.Empty) {}
+  rpc ListBooks(ListBooksRequest) returns (ListBooksResponse) {}
+  rpc CreateBook(CreateBookRequest) returns (Book) {}
+  rpc GetBook(GetBookRequest) returns (Book) {}
+  rpc DeleteBook(DeleteBookRequest) returns (google.protobuf.Empty) {}
+}
+
+message Shelf {
+  int64 id = 1;
+  string theme = 2;
+}
+
+message Book {
+  int64 id = 1;
+  string author = 2;
+  string title = 3;
+}
+
+message ListShelvesResponse {
+  repeated Shelf shelves = 1;
+}
+
+message CreateShelfRequest {
+  Shelf shelf = 1;
+}
+
+message GetShelfRequest {
+  int64 shelf = 1;
+}
+
+message DeleteShelfRequest {
+  int64 shelf = 1;
+}
+
+message ListBooksRequest {
+  int64 shelf = 1;
+}
+
+message ListBooksResponse {
+  repeated Book books = 1;
+}
+
+message CreateBookRequest {
+  int64 shelf = 1;
+  Book book = 2;
+}
+
+message GetBookRequest {
+  int64 shelf = 1;
+  int64 book = 2;
+}
+
+message DeleteBookRequest {
+  int64 shelf = 1;
+  int64 book = 2;
+}
