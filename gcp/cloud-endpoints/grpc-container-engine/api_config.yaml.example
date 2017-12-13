@@ -1,0 +1,13 @@
+type: google.api.Service
+config_version: 3
+
+name: bookstore.endpoints.<MY_PROJECT_ID>.cloud.goog
+
+title: Bookstore gRPC API
+apis:
+  - name: endpoints.examples.bookstore.Bookstore
+
+usage:
+  rules:
+    - selector: endpoints.examples.bookstore.Bookstore.ListShelves
+      allow_unregistered_calls: true
